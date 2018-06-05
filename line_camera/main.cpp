@@ -18,7 +18,7 @@ int main()
     timer.wait();
     line_position.read();
     line_position.process();
-    line_position.compute_line_position();
+  //  line_position.compute_line_position();
 
 
     for (unsigned int i = 0; i < line_position.pixels.size(); i+=2)
