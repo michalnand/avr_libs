@@ -55,8 +55,6 @@ void LineCamera::process()
 }
 
 
-
-
 void LineCamera::adc_init(unsigned char ch)
 {
   // AREF = AVcc
