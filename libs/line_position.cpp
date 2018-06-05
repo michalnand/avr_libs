@@ -10,6 +10,9 @@ LinePostion::LinePostion()
 
   for (unsigned int i = tmp; i < kernel.size()-tmp; i++)
     kernel[i] = -1;
+
+  confidence = 0;
+  result = 0;
 }
 
 LinePostion::~LinePostion()
@@ -30,11 +33,18 @@ void LinePostion::compute_line_position()
       result = i;
     }
   }
+
+  confidence = conv_res_max;
 }
 
 int LinePostion::get()
 {
   return result;
+}
+
+int32_t LinePostion::get_confidence()
+{
+  return confidence;
 }
 
 

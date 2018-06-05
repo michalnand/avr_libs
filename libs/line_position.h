@@ -9,6 +9,7 @@ class LinePostion :public LineCamera
 {
   private:
     int result;
+    int32_t confidence;
     Array<int, LINE_KERNEL_SIZE> kernel;
 
   public:
@@ -17,6 +18,7 @@ class LinePostion :public LineCamera
 
     void compute_line_position();
     int get();
+    int32_t get_confidence();
 
   private:
     int32_t process_convolution(unsigned int offset);

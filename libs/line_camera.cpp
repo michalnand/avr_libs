@@ -52,6 +52,13 @@ void LineCamera::process()
 
   for (unsigned int i = 0; i < pixels.size(); i++)
     pixels[i]-= average;
+
+  for (unsigned int i = 0; i < pixels.size(); i++)
+    if (pixels[i] > 0)
+      pixels[i] = 1;
+    else
+      pixels[i] = -1;
+
 }
 
 

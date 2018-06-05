@@ -22,13 +22,14 @@ int main()
 
 
     for (unsigned int i = 0; i < line_position.pixels.size(); i+=2)
-      if (line_position.pixels[i] > 0)
-        terminal << "1";
+      if (line_position.pixels[i] < 0)
+        terminal << "*";
       else
-        terminal << "0";
+        terminal << ".";
 
     terminal << "\n";
-    terminal << "pos = " << line_position.get() << "\n";
+    terminal << "pos = " << line_position.get() << " ";
+    terminal << "conf = " << line_position.get_confidence() << "\n";
 
   }
 
