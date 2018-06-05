@@ -3,7 +3,7 @@
 
 #include "line_camera.h"
 
-#define LINE_KERNEL_SIZE  ((unsigned int)32)
+#define LINE_KERNEL_SIZE  ((unsigned int)40)
 
 class LinePostion :public LineCamera
 {
