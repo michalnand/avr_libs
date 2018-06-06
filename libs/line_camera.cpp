@@ -1,5 +1,7 @@
 #include "line_camera.h"
 
+//https://github.com/hobgreenson/arduino-TSL1401/blob/master/linearArrayCodeFullFrame.ino
+
 LineCamera::LineCamera()
 {
   si  = 0;
@@ -15,16 +17,29 @@ LineCamera::~LineCamera()
 void LineCamera::read()
 {
   adc_init(0);
-  delay_micro();
 
+//  delay_micro();
 //  delay_mili(10);              /* Integration time in miliseconds  */
-
+/*
  clk = 0;
  si  = 1;
  clk = 1;
  si  = 0;
+*/
 
-  delay_micro();
+ si = 1;
+ __asm volatile("nop");
+ __asm volatile("nop");
+ clk = 1;
+ __asm volatile("nop");
+ __asm volatile("nop");
+ si = 0;
+ __asm volatile("nop");
+ __asm volatile("nop");
+ clk = 0;
+ __asm volatile("nop");
+ __asm volatile("nop");
+
 
   for (unsigned int i = 0; i < pixels.size(); i++)
   {
@@ -40,7 +55,6 @@ void LineCamera::read()
   delay_micro();
   clk = 1;
   delay_micro();
-
 }
 
 void LineCamera::process()
