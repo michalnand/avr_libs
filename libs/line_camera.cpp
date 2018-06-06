@@ -17,44 +17,41 @@ LineCamera::~LineCamera()
 void LineCamera::read()
 {
   adc_init(0);
-
-//  delay_micro();
-//  delay_mili(10);              /* Integration time in miliseconds  */
-/*
- clk = 0;
- si  = 1;
- clk = 1;
- si  = 0;
-*/
-
- si = 1;
- __asm volatile("nop");
- __asm volatile("nop");
- clk = 1;
- __asm volatile("nop");
- __asm volatile("nop");
- si = 0;
- __asm volatile("nop");
- __asm volatile("nop");
- clk = 0;
- __asm volatile("nop");
- __asm volatile("nop");
+  delay_micro();
 
 
-  for (unsigned int i = 0; i < pixels.size(); i++)
-  {
-    pixels[i] = adc_read()>>2;
+  si  = 1;
+  delay_micro();
 
-    clk = 0;
-    delay_micro();
-    clk = 1;
-  }
+  clk = 1;
+  delay_micro();
 
+  si  = 0;
+  delay_micro();
 
   clk = 0;
   delay_micro();
-  clk = 1;
-  delay_micro();
+
+/*
+ si = 1;
+ delay_micro();
+ clk = 1;
+ delay_micro();
+ si = 0;
+ delay_micro();
+ clk = 0;
+ delay_micro();
+*/
+
+  for (unsigned int i = 0; i < pixels.size(); i++)
+  {
+    clk = 1;
+    delay_micro();
+
+    pixels[i] = adc_read()>>3;
+    clk = 0;
+    delay_micro();
+  }
 }
 
 void LineCamera::process()

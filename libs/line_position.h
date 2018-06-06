@@ -3,14 +3,14 @@
 
 #include "line_camera.h"
 
-#define LINE_KERNEL_SIZE  ((unsigned int)40)
+#define LINE_KERNEL_SIZE  ((unsigned int)35)
 
 class LinePostion :public LineCamera
 {
   private:
     int result;
     int32_t confidence;
-    Array<int, LINE_KERNEL_SIZE> kernel;
+    Array<int8_t, LINE_KERNEL_SIZE> kernel;
 
   public:
     LinePostion();

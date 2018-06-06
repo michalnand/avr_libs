@@ -3,9 +3,9 @@
 
 LinePostion::LinePostion()
 {
-  unsigned int line_width = kernel.size()/2;
+  unsigned int line_width = 24;
   unsigned int tmp = kernel.size() - line_width;
-
+ 
   kernel.set(1);
 
   for (unsigned int i = tmp; i < kernel.size()-tmp; i++)

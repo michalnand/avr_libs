@@ -9,7 +9,7 @@
 class LineCamera
 {
   public:
-    Array<int, CAMERA_N_PIXELS> pixels;
+    Array<int8_t, CAMERA_N_PIXELS> pixels;
 
   private:
     TGpio<TGPIOC, 0, GPIO_MODE_IN_FLOATING> camera_out;   //PC0 -> ADC0
