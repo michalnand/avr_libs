@@ -5,7 +5,7 @@ LinePostion::LinePostion()
 {
   unsigned int line_width = 24;
   unsigned int tmp = kernel.size() - line_width;
- 
+
   kernel.set(1);
 
   for (unsigned int i = tmp; i < kernel.size()-tmp; i++)
@@ -35,6 +35,13 @@ void LinePostion::compute_line_position()
   }
 
   confidence = conv_res_max;
+
+  if (result > 100)
+    result = 0;
+  if (result > 80)
+    result = 80;
+
+  result-= 40;
 }
 
 int LinePostion::get()
